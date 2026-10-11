@@ -230,10 +230,11 @@ export function replyMessage({ messageId, text, markdown, replyInThread = false 
  */
 export function spawnEventConsume({ onLine, onExit, log } = {}) {
   const bin = resolveLarkCli();
-  const args = ["event", "consume", EVENT_KEY, "--as", "bot"];
-  log?.(`spawn ${bin} ${args.join(" ")}`);
+  // lark-cli exits when stdin closes; keep stdin open via bash + tail -f /dev/null
+  const shellCmd = `"${bin}" event consume ${EVENT_KEY} --as bot < <(tail -f /dev/null)`;
+  log?.(`spawn bash -lc ${shellCmd}`);
 
-  const child = spawn(bin, args, {
+  const child = spawn("bash", ["-lc", shellCmd], {
     stdio: ["ignore", "pipe", "pipe"],
     env: {
       ...process.env,
