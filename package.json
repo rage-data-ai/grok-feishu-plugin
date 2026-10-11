@@ -1,0 +1,13 @@
+{
+  "name": "grok-feishu-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Grok Bot Feishu/Lark channel plugin (MCP + long-connection monitor)",
+  "scripts": {
+    "start": "node server/index.js",
+    "monitor": "node server/index.js --monitor",
+    "uninstall": "node server/uninstall.js --uninstall",
+    "check": "node --check server/index.js && node --check server/store.js && node --check server/lark.js && node --check server/uninstall.js"
+  }
+}

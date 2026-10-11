@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "grok-feishu",
+  "description": "飞书/Lark 机器人渠道：应用凭证配置、长连接收消息、发送/回复。入站经 webhook 唤醒。",
+  "version": "1.0.0",
+  "author": {
+    "name": "yi-y"
+  }
+}
